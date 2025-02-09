@@ -1,9 +1,29 @@
 import React, { useState } from "react";
-import "./App.css"; // We'll create this file next
+import axios from "axios";
+import "./App.css";
 
 function App() {
   const [mode, setMode] = useState("Definition AI");
   const [tab, setTab] = useState("Chat");
+  const [input, setInput] = useState("");
+  const [response, setResponse] = useState("");
+
+ const handleSubmit = async () => {
+  if (!input.trim()) return;
+
+  try {
+    const res = await axios.post("http://127.0.0.1:8000/ask-ai/", {
+      question: input,
+      mode: mode,
+    });
+
+    setResponse(res.data.response.replace(/\n/g, "<br>")); // Replace newlines with HTML line breaks
+  } catch (error) {
+    console.error("Error:", error);
+    setResponse("❌ Error: Could not get a response from AI.");
+  }
+};
+
 
   return (
     <div className="container">
@@ -25,8 +45,19 @@ function App() {
 
             {/* Chat Area */}
             <p className="chat-title">Chatbot ({mode})</p>
-            <input type="text" placeholder="Ask a question..." className="chat-input" />
-            <button className="send-btn">Send</button>
+            <input
+              type="text"
+              placeholder="Ask a question..."
+              className="chat-input"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+            <button className="send-btn" onClick={handleSubmit}>Send</button>
+
+            {/* AI Response */}
+            {response && (
+              <div className="chat-response" dangerouslySetInnerHTML={{ __html: response }} />
+            )}
           </div>
         ) : (
           <div className="videos-container">

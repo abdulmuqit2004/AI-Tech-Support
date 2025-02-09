@@ -51,6 +51,16 @@ button.active {
   border-radius: 5px;
 }
 
+.chat-response {
+  background: #f1f1f1;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  white-space: pre-line; /* Preserve line breaks */
+  text-align: left;
+}
+
+
 .send-btn {
   background: blue;
   color: white;
