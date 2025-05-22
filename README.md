@@ -9,7 +9,7 @@ The goal was to create a tool that could assist people, especially those less fa
 - **Definition AI**: Gives direct technical answers quickly, similar to typical AI assistants.
 - **Tech Support AI**: Offers step-by-step troubleshooting guidance to walk users through solving problems in a simpler, more digestible way.
 
-## 🧪 Features
+## Features
 
 - Switch between two AI assistant modes (instant vs. guided help)
 - Text input and chatbot-style interface
@@ -17,7 +17,7 @@ The goal was to create a tool that could assist people, especially those less fa
 - AI response display with basic HTML formatting
 - Placeholder for future video tutorials section
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - **React.js** – For the frontend UI
 - **Axios** – For making API calls to the backend
